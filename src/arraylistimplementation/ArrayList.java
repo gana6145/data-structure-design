@@ -3,7 +3,7 @@ package arraylistimplementation;
 
 
 public class ArrayList<E> {
-	int count=0;
+	private int count=0;
 	int initCap=ResizableArray.intialCap;
 	Object ar[];
 	
@@ -17,24 +17,25 @@ public class ArrayList<E> {
     		this.initCap=intialCap;
         	ar=new Object[initCap];
     	}
+    	else {
+    		throw new WrongIntialCapacity("enter a positive number");
+    	}
 		
 	}
+     
     
+    private void resize() {
+    	Object temp[]= new Object[ar.length*2];
+    	for(int i=0;i<count;i++) {
+			temp[i]=ar[i];
+		}
+    	ar=temp;
+    }
     public boolean add(E o){
-    	if(count<ar.length*ResizableArray.loadFactor) {
-    		ar[count++]=o;
-    		
-    	}
-    	else {
-    		Object temp[]= new Object[ar.length*2];
-    		for(int i=0;i<count;i++) {
-    			temp[i]=ar[i];
+    	if(count>=ar.length*ResizableArray.loadFactor) {
+    		resize();
     		}
-    		temp[count++]=o;
-    		ar=temp;
-    		
-    	}
-    
+    	ar[count++]=o;
     	return true;
     		
     	}
@@ -42,6 +43,9 @@ public class ArrayList<E> {
     
     public boolean add(int index,E o) {
     	if(index>=0 && index<=count) {
+    	 if(count>=ar.length*ResizableArray.loadFactor) {
+        		resize();
+          }
     		rightShift(index);
     		ar[index]=o;
     		count++;
@@ -49,10 +53,47 @@ public class ArrayList<E> {
     	else {
     		return false;
     	}
-    	
-    	
     	return true;
     	}
+    
+    public boolean set(int index, E o) {
+    	if(index>=0 && index<count) {
+    		ar[index]=o;
+    		return true;
+    	}
+		return false;
+    	
+    }
+    public boolean clear() {
+    	for(int i=0;i<count;i++) {
+    		ar[i]=null;
+    		
+    	}
+    	count=0;
+    	return true;
+    }
+    
+    public int indexOf(E o) {
+    	for(int i=0;i<count;i++) {
+    		if(ar[i]==o) {
+    			return i;
+    		}
+    	}
+    	return -1;
+    }
+    
+    
+    
+    public boolean remove(int index) {
+    	if(index<count && index>=0) {
+    		leftShift(index);
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    	
+   }
     public boolean rightShift(int index) {
     	
     	for(int i=count-1;i>=index;i--) {
@@ -82,6 +123,14 @@ public class ArrayList<E> {
     	
     }
     
+     public boolean isEmpty() {
+    	 return count==0;
+     }
+     
+     
+     public int size() {
+    	 return count;
+     }
     
     
      @Override

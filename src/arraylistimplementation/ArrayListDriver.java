@@ -7,11 +7,12 @@ public class ArrayListDriver {
 		a1.add("Ganesh");
 		a1.add("Staish");
 		a1.add("Jadhav");
-		a1.leftShift(0);
-		System.out.println(a1.get(1));
-	   
+//		System.out.println(a1);
 		
-		
-	}
+//		System.out.println(a1);
+		a1.rightShift(1);
+		System.out.println(a1);
+		System.out.println(a1.size());
+	  }
 
 }
