@@ -5,7 +5,7 @@ public class WrongIntialCapacity extends RuntimeException {
 	WrongIntialCapacity(){
 		
 	}
-    WrongIntialCapacity(String msg){
+    public WrongIntialCapacity(String msg){
     	super(msg);
 		
 	}
