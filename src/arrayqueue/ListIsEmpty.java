@@ -5,7 +5,7 @@ public class ListIsEmpty extends RuntimeException {
 		
 	}
      ListIsEmpty(String msg){
-    	 super("msg");
+    	 super(msg);
 		
 	}
 
