@@ -17,6 +17,7 @@ public class QueueDriver {
 		list.add("ajinkya");
 		System.out.println(list);
 		System.out.println(list.size());
+		ArrayQueue<String> list1=new ArrayQueue<String>();
 		
 }
 

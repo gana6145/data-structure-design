@@ -1,0 +1,125 @@
+Implements FIFO (First-In-First-Out) behavior using an array.
+First element added is always first removed.
+Dynamically grows when full.
+leftShift() ensures the front element is always at index 0.
+
+
+add(E ele)
+
+Idea: Add an element to the end of the queue.
+
+How it works:
+
+Check if element is not null.
+
+Call resize() if the array is full.
+
+Store the element at index count and increment count.
+
+resize() (private helper)
+
+Idea: Dynamically increase the array size when full.
+
+How it works:
+
+Create a new array of double the current length.
+
+Copy all existing elements into the new array.
+
+Replace the old array with the new array.
+
+element()
+
+Idea: View the first element of the queue without removing it.
+
+How it works:
+
+If the queue is empty (count == 0), throw ListIsEmpty.
+
+Otherwise, return ar[0].
+
+peek()
+
+Idea: Safe version of element() that returns null if empty.
+
+How it works:
+
+If count == 0, return null.
+
+Otherwise, return ar[0].
+
+poll()
+
+Idea: Remove and return the first element, but return null if empty.
+
+How it works:
+
+If queue is empty, return null.
+
+Store the first element in a variable.
+
+Call leftShift() to move remaining elements forward.
+
+Return the stored element.
+
+remove()
+
+Idea: Remove and return the first element, throwing an exception if empty.
+
+How it works:
+
+If queue is empty (count == 0), throw ListIsEmpty.
+
+Store the first element.
+
+Call leftShift() to remove it from the array.
+
+Return the stored element.
+
+leftShift() (private helper)
+
+Idea: Maintain queue order after removing the first element.
+
+How it works:
+
+Move all elements one step to the left (ar[i-1] = ar[i]).
+
+Set the last element (ar[count-1]) to null.
+
+Decrement count.
+
+isEmpty()
+
+Idea: Check if the queue has no elements.
+
+How it works:
+
+Return true if count == 0; otherwise, return false.
+
+size()
+
+Idea: Return the number of elements in the queue.
+
+How it works:
+
+Simply return count.
+
+equals(Object obj)
+
+Idea: Compare this queue with another queue for equality.
+
+How it works:
+
+Check if the other object is an ArrayQueue and sizes are equal.
+
+Compare each element using .equals() to ensure order and content match.
+
+toString()
+
+Idea: Get a string representation of the queue.
+
+How it works:
+
+Loop through all elements from 0 to count-1.
+
+Add elements to a string separated by commas inside [ ].

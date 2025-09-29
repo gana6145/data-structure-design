@@ -8,7 +8,7 @@ public class ArrayList<E> {
 	Object ar[];
 	
 	
-	ArrayList(){
+	public ArrayList(){
 		ar=new Object[initCap];
 		
 	}
